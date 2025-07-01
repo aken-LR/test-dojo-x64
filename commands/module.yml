@@ -31,4 +31,5 @@ challenges:
 resources:
 - name: Resources
   type: markdown
-  content:
+  content: |
+    - none
