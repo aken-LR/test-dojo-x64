@@ -16,3 +16,5 @@ modules:
 
   - id: "commands"
     icon: 0875_Eiscue
+  
+  - id: "man"
