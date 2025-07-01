@@ -16,6 +16,8 @@ challenges:
   name: "创建文件"
 - id: "rm"
   name: "删除文件"
+- id: "mv"
+  name: "移动文件"
 - id: "ls-a"
   name: "隐藏文件"
 - id: "filesystem-quest"
