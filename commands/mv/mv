@@ -32,5 +32,5 @@ then
 	exit 2
 fi
 
-echo "正确！正在执行 'mv $1 $2'".
+echo "正确！正在执行 mv $1 $2"
 /bin/mv "$1" "$2"
