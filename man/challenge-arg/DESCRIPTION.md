@@ -7,7 +7,7 @@
 因为我们想要列出隐藏文件，所以在那个场景下，使用带 `-a` 参数的 `ls` 命令就是正确的用法。
 
 本次挑战的程序是 `/challenge/challenge`，你需要正确地调用它，它才会把 `flag` 给你。
-Let's pretend that this is its documentation:
+我们来假装下面这段话就是它的文档：
 
 >欢迎阅读 `/challenge/challenge` 的文档！要正确运行此程序，你需要给它传递 `--giveflag` 这个参数。祝你好运！
 
