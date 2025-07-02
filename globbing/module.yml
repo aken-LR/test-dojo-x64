@@ -33,7 +33,7 @@ challenges:
   name: "命令的 Tab 键补全"
   
   resources:
-  - type: markdown
-    name: Resources
+  - name: Resources
+    type: markdown
     content: |
       - Bash 参考手册中的[关于 Shell 扩展的章节](https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html)会很有帮助。
