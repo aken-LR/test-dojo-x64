@@ -18,3 +18,25 @@ modules:
     icon: 0875_Eiscue
   
   - id: "man"
+
+  - id: "globbing"
+  
+  - id: "piping"
+  
+  - id: "variables"
+  
+  - id: "data"
+  
+  - id: "processes"
+  
+  - id: "permissions"
+  
+  - id: "users"
+  
+  - id: "chaining"
+  
+  - id: "path"
+  
+  - id: "shenanigans"
+  
+  - id: "destruction"
