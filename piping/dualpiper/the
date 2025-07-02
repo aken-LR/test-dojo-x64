@@ -7,7 +7,7 @@ then
 		xargs -IPID -n1 ls /proc/PID/fd/ -l 2>/dev/null |
 		grep pts | sed -e "s/.* //" | sort -u | tail -n1
 	)
-	fold -s > $PTS <<< "You are redirecting standard error *of /challenge/the*! Instead, you must redirect standard error of 'hack'. This must be done *before* any |. The right side of the pipe is a different command, with its own redirection, than the left side!"
+	fold -s > $PTS <<< "你正在重定向*/challenge/the的*标准错误！你应该重定向的是hack的标准错误。这个操作必须在任何管道符（|）*之前*进行。管道符右侧的命令是一个独立的命令，其重定向设置与左侧的命令是分开的！"
 fi
 
 read CORRECT < /challenge/.challenge-key-stderr
@@ -16,5 +16,5 @@ if [ "$CORRECT" == "$ATTEMPT" ]
 then
 	cp /challenge/.challenge-key-solve /challenge/.the
 else
-	fold -s >&2 <<< "Are you sure you're properly redirecting /challenge/hack's standard error into '/challenge/the'?"
+	fold -s >&2 <<< "你确定你已将/challenge/hack的标准错误正确地重定向到/challenge/the了吗？"
 fi

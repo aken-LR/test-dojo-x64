@@ -1,17 +1,17 @@
-Now, let's put your knowledge together.
-You must master the ultimate piping task: redirect stdout to one program and stderr to another.
+现在，让我们把你学到的知识整合起来。
+你必须完成一项终极的管道任务：将标准输出（stdout）重定向到一个程序，同时将标准错误（stderr）重定向到另一个程序。
 
-The challenge here, of course, is that the `|` operator links the _stdout_ of the left command with the _stdin_ of the right command.
-Of course, you've used `2>&1` to redirect stderr into stdout and, thus, pipe stderr over, but this then mixes stderr and stdout.
-How to keep it unmixed?
+当然，这里的挑战在于，`|` 操作符只连接左边命令的*标准输出*和右边命令的*标准输入*。
+你之前用过 `2>&1` 将标准错误重定向到标准输出，从而通过管道传输了标准错误，但这样一来，标准错误和标准输出就混合在了一起。
+那么，如何让它们保持分离呢？
 
-You will need to combine your knowledge of `>()`, `2>`, and `|`.
-How to do it is a task I'll leave to you.
+你需要结合运用你关于 `>()`、`2>` 和 `|` 的知识。
+具体的实现方法，就留给你自己去探索了。
 
-In this challenge, you have:
+在这个挑战中，你会遇到以下程序：
 
-- `/challenge/hack`: this produces data on _stdout_ and _stderr_
-- `/challenge/the`: you must redirect `hack`'s _stderr_ to this program
-- `/challenge/planet`: you must redirect `hack`'s _stdout_ to this program
+-   `/challenge/hack`：该程序会同时在*标准输出*和*标准错误*上产生数据。
+-   `/challenge/the`：你必须将 `hack` 的*标准错误*重定向到这个程序。
+-   `/challenge/planet`：你必须将 `hack` 的*标准输出*重定向到这个程序。
 
-Go get the flag!
+去获取flag吧！

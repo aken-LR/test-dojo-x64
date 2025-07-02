@@ -2,22 +2,22 @@
 
 if [[ "$1" =~ "/dev/fd"* ]]
 then
-	fold -s <<< "It looks like you passed something like '>(something)' as an *argument* to /challenge/hack rather than redirecting /challenge/hack's out/error to '>(something)'. Remember, 'cmd1 >(cmd2)' does *NOT* redirect output of cmd1; rather, it'll run cmd2, hook a file up to its standard input, and pass that file as an argument to cmd1. If you want to redirect cmd1's output into that file, you will need to do: 'cmd1 > >(cmd2)', which is equivalent to 'cmd1 | cmd2'."
+	fold -s <<< "你似乎把像 '>(something)' 这样的内容作为*参数*传递给了 /challenge/hack，而不是将 /challenge/hack 的输出/错误重定向到 '>(something)'。请记住，'cmd1 >(cmd2)' 并*不会*重定向 cmd1 的输出；它做的是：运行 cmd2，将一个文件连接到其标准输入，然后将该文件的路径作为参数传递给 cmd1。如果你想将 cmd1 的输出重定向到那个文件，你需要这样做：'cmd1 > >(cmd2)'，这等同于 'cmd1 | cmd2'。"
 fi
 
 if [ -t 1 ] || [ -f /dev/fd/1 ]
 then
-	fold -s <<< "You must redirect my standard output into '/challenge/planet'!"
+	fold -s <<< "你必须将我的标准输出重定向到 '/challenge/planet'！"
 else
-	fold -s <<< "This secret data must directly make it to /challenge/planet over my stdout. Don't try to copy-paste it; it changes too fast."
+	fold -s <<< "这些机密数据必须通过我的标准输出直接送达 /challenge/planet。不要试图复制粘贴它；它变化得太快了。"
 	cat /challenge/.challenge-key-stdout
 fi
 
 if [ -t 2 ] || [ -f /dev/fd/2 ]
 then
-	fold -s >&2 <<< "You must redirect my standard error into '/challenge/the'!"
+	fold -s >&2 <<< "你必须将我的标准错误重定向到 '/challenge/the'！"
 else
-	fold -s >&2 <<< "This secret data must directly make it to /challenge/the over my stderr. Don't try to copy-paste it; it changes too fast."
+	fold -s >&2 <<< "这些机密数据必须通过我的标准错误直接送达 /challenge/the。不要试图复制粘贴它；它变化得太快了。"
 	cat /challenge/.challenge-key-stderr >&2
 fi
 
