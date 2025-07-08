@@ -12,5 +12,5 @@ then
 	exit 2
 fi
 
-echo "参数正确!这是你的 flag: "
+echo "参数正确!这是你的 flag : "
 cat /flag
