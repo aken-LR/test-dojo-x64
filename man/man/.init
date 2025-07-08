@@ -43,14 +43,10 @@ man(1) bash-builtins(7)
 
 try:
     os.chmod("/challenge/bin/man", 0o755)
-except OSError as e:
-    pass
+except OSError:
+    pass 
 
-pwnrc_path = "/.pwn.college.rc"
-
-path_command = 'export PATH="/challenge/bin:$PATH"\n'
-
-with open(pwnrc_path, "a") as rc_file:
-    rc_file.seek(0)
-    if path_command not in rc_file.read():
-        rc_file.write(path_command)
+os.system(r"""
+grep -qxF 'export PATH="/challenge/bin:$PATH"' /.pwn.college.rc || \
+echo 'export PATH="/challenge/bin:$PATH"' >> /.pwn.college.rc
+""")
