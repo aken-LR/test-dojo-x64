@@ -1,0 +1,40 @@
+#!/opt/pwn.college/python
+
+import errno
+import sys
+import os
+
+MARKER = "/tmp/disk_doomsday_phase1"
+TEST_FILE = "/home/hacker/.space_test"
+TEST_SIZE = 1 * 1024 * 1024
+
+def try_create():
+    try:
+        with open(TEST_FILE, "wb") as fh:
+            fh.truncate(TEST_SIZE)
+    except OSError as e:
+        if "quota" in str(e):
+            return False
+        print("创建临时文件时发生意外失败。")
+        sys.exit(1)
+    else:
+        os.remove(TEST_FILE)
+        return True
+
+can_create = try_create()
+
+if not os.path.exists(MARKER):
+    if can_create:
+        print(
+            "空间还很充足。请填满 /home/hacker 目录，直到无法创建 1MB 的文件，然后再次运行本检查程序。"
+        )
+    else:
+        open(MARKER, "w").close()
+        print(
+            "干得漂亮，你成功塞满了磁盘。现在请释放空间（删除你创建的文件），然后再次运行 /challenge/solve 来证明你已经清理干净了！"
+        )
+elif not can_create:
+    print("仍然没有足够的空间。请继续清理，然后重试！")
+else:
+    print("磁盘空间已恢复。这是你的 flag：")
+    print(open("/flag").read().strip())
