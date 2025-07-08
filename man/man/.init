@@ -46,7 +46,10 @@ try:
 except OSError:
     pass 
 
-os.system(r"""
-grep -qxF 'export PATH="/challenge/bin:$PATH"' /.pwn.college.rc || \
-echo 'export PATH="/challenge/bin:$PATH"' >> /.pwn.college.rc
-""")
+command_to_add = 'export PATH="/challenge/bin:$PATH"'
+target_file = '/home/hacker/.bash_aliases' 
+
+os.system(
+    f"grep -qxF '{command_to_add}' {target_file} || "
+    f"echo '{command_to_add}' >> {target_file}"
+)
