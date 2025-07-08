@@ -1,15 +1,24 @@
 #!/bin/bash
 
-DIR=$(/bin/dirname ${BASH_SOURCE[0]})
+DIR=$(/bin/dirname "${BASH_SOURCE[0]}")
 cd "$DIR"
 
-read -a FLAG < /flag
+read -r FLAG_CONTENT < /flag
 FLA=$RANDOM
 FLB=$RANDOM
-echo $FLAG > /tmp/.$FLA-$FLB
-echo "export FLA=$FLA" >> /challenge/.bashrc
-echo "export FLB=$FLB" >> /challenge/.bashrc
+
+ENV_FILE="/challenge/challenge.env"
+echo "export FLA=$FLA" > "$ENV_FILE"
+echo "export FLB=$FLB" >> "$ENV_FILE"
+
+echo "$FLAG_CONTENT" > "/tmp/.$FLA-$FLB"
 
 FLAG_PIECE=$(tail -c+13 /flag | head -c 8)
-gcc -DSECRET_VALUE="\"$FLAG_PIECE\"" -I/usr/include/bash/builtins -I/usr/include/bash/include -I/usr/include/bash -I/usr/lib/bash -shared -fPIC -o .challenge.so challenge.c 
-rm -f /challenge/challenge.c
+gcc -DSECRET_VALUE="\"$FLAG_PIECE\"" \
+    -I/usr/include/bash/builtins -I/usr/include/bash/include \
+    -I/usr/include/bash -I/usr/lib/bash \
+    -shared -fPIC -o .challenge.so challenge.c
+
+if [ $? -eq 0 ]; then
+    rm -f /challenge/challenge.c
+fi
