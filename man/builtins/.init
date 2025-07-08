@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+exec &> /tmp/init.log
+
 DIR=$(/bin/dirname "${BASH_SOURCE[0]}")
 cd "$DIR"
 
