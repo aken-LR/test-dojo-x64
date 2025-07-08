@@ -19,8 +19,8 @@ if (
 	"-g" in sys.argv and "-p" in sys.argv and
 	sys.argv.index("-g") + 1 == sys.argv.index("-p")
 ):
-	print("你将 -p 作为了 -g 选项的参数！")
-	print("请仔细阅读用法说明：-g 选项需要一个它自己的数字参数。")
+	print("你将 -p 作为了 -g 选项的参数!")
+	print("请仔细阅读用法说明: -g 选项需要一个它自己的数字参数.")
 	sys.exit(1)
 
 args = parser.parse_args()
@@ -30,18 +30,18 @@ if args.fortune:
 	sys.exit(0)
 
 if args.version:
-	print("我就是我所需要的那个版本！")
+	print("我就是我所需要的那个版本!")
 	sys.exit(0)
 
 if args.give_the_flag is not None:
 	if args.give_the_flag == N:
-		print("用法正确！你的 flag 是：", FLAG)
+		print("用法正确!你的 flag 是: ", FLAG)
 	else:
-		print("数字不正确！请查看程序的帮助信息。")
+		print("数字不正确!请查看程序的帮助信息.")
 	sys.exit(0)
 
 if args.print_value:
-	print("秘密数值是：", N)
+	print("秘密数值是: ", N)
 	sys.exit(0)
 
-print("未指定任何选项。")
+print("未指定任何选项.")

@@ -14,7 +14,7 @@ int challenge_builtin(WORD_LIST *list)
 {
 	if (!list)
 	{
-		puts("用法不正确！请阅读 challenge 内建命令的帮助页面！");
+		puts("用法不正确!请阅读 challenge 内建命令的帮助页面!");
 		return EXECUTION_FAILURE;
 	}
 
@@ -24,25 +24,25 @@ int challenge_builtin(WORD_LIST *list)
 	}
 	else if (!strcmp(list->word->word, "--version"))
 	{
-		puts("我就是我所需要的那个版本！");
+		puts("我就是我所需要的那个版本!");
 	}
 	else if (!strcmp(list->word->word, "--secret"))
 	{
 		if (!list->next)
 		{
-			puts("错误：--secret 选项缺少参数。");
+			puts("错误: --secret 选项缺少参数.");
 			return EXECUTION_FAILURE;
 		}
 		if (strcmp(list->next->word->word, SECRET_VALUE))
 		{
-			puts("错误：--secret 选项的参数不正确。请阅读帮助页面！");
+			puts("错误: --secret 选项的参数不正确.请阅读帮助页面!");
 			return EXECUTION_FAILURE;
 		}
-		puts("正确！这是你的 flag！");
+		puts("正确!这是你的 flag!");
 
 		if (!find_variable("FLA") || !find_variable("FLB"))
 		{
-			puts("错误：环境问题。这不是你的错；请将此问题报告给老师。");
+			puts("错误: 环境问题.这不是你的错;请将此问题报告给老师.");
 			return EXECUTION_FAILURE;
 		}
 
@@ -55,7 +55,7 @@ int challenge_builtin(WORD_LIST *list)
 	}
 	else
 	{
-		puts("用法不正确！请阅读 challenge 内建命令的帮助页面！");
+		puts("用法不正确!请阅读 challenge 内建命令的帮助页面!");
 		return EXECUTION_FAILURE;
 	}
 
@@ -73,7 +73,7 @@ void challenge_builtin_unload(char *name)
 }
 
 char *challenge_doc[] = {
-	"这个内建命令在给定正确参数时，会为你读取 flag！",
+	"这个内建命令在给定正确参数时,会为你读取 flag!",
 	(
 	 ""
 	 "\n"
@@ -82,7 +82,7 @@ char *challenge_doc[] = {
 	 "      --version		显示版本号\n"
 	 "      --secret VALUE	如果 VALUE 正确，则打印 flag\n"
 	 "\n"
-	 "    你必须确保为 --secret 提供正确的值。那个值就是 \"" SECRET_VALUE "\"。"
+	 "    你必须确保为 --secret 提供正确的值.那个值就是 \"" SECRET_VALUE "\"."
 	),
 	(char *)NULL
 };
