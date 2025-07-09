@@ -2,7 +2,7 @@
 
 if [[ "$1" =~ "/dev/fd"* ]]
 then
-	fold -s <<< "你似乎把像 '>(something)' 这样的内容作为*参数*传递给了 /challenge/hack，而不是将 /challenge/hack 的输出/错误重定向到 '>(something)'。请记住，'cmd1 >(cmd2)' 并*不会*重定向 cmd1 的输出；它做的是：运行 cmd2，将一个文件连接到其标准输入，然后将该文件的路径作为参数传递给 cmd1。如果你想将 cmd1 的输出重定向到那个文件，你需要这样做：'cmd1 > >(cmd2)'，这等同于 'cmd1 | cmd2'。"
+	printf "你似乎把像 '>(something)' 这样的内容作为*参数*传递给了 /challenge/hack，\n而不是将 /challenge/hack 的输出/错误重定向到 '>(something)'。\n\n请记住，'cmd1 >(cmd2)' 并*不会*重定向 cmd1 的输出；\n它做的是：运行 cmd2，将一个文件连接到其标准输入，然后将该文件的路径作为参数传递给 cmd1。\n\n如果你想将 cmd1 的输出重定向到那个文件，你需要这样做：'cmd1 > >(cmd2)'，这等同于 'cmd1 | cmd2'。\n"
 fi
 
 if [ -t 1 ] || [ -f /dev/fd/1 ]
