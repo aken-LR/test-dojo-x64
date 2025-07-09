@@ -7,7 +7,7 @@ then
 		xargs -IPID -n1 ls /proc/PID/fd/ -l 2>/dev/null |
 		grep pts | sed -e "s/.* //" | sort -u | tail -n1
 	)
-	fold -s > $PTS <<< "你正在重定向*/challenge/the的*标准错误！你应该重定向的是hack的标准错误。这个操作必须在任何管道符（|）*之前*进行。管道符右侧的命令是一个独立的命令，其重定向设置与左侧的命令是分开的！"
+	printf "你正在重定向 */challenge/the 的*标准错误！\n你应该重定向的是 hack 的标准错误。\n\n这个操作必须在任何管道符（|）*之前*进行。\n管道符右侧的命令是一个独立的命令，其重定向设置与左侧的命令是分开的！\n" > $PTS
 fi
 
 read CORRECT < /challenge/.challenge-key-stderr
