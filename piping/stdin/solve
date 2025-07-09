@@ -16,7 +16,7 @@ then
 	exit 2
 fi
 
-echo "Reading from standard input..."
+echo "正在读取标准输入..."
 read COLLEGE
 if [ "$COLLEGE" != "COLLEGE" ]
 then
