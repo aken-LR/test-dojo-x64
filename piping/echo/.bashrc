@@ -16,7 +16,7 @@ function give_flag {
 
 	if [ ! -f /tmp/.redirected ]
 	then
-		fold -s <<< "你创建了 COLLEGE 文件并写入了正确的内容,但看起来你似乎不是通过输入重定向完成的."
+		fold -s <<< "你创建了COLLEGE文件并写入了正确的内容,但看起来你似乎不是通过输入重定向完成的."
 		return
 	fi
 
