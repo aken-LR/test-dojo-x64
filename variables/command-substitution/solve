@@ -2,7 +2,7 @@
 
 if [ -t 1 ] || [ ! -f /tmp/subshell ]
 then
-	fold -s >&2 <<< "你没有通过命令替换来运行我!请确保使用命令替换来运行本脚本."
+	fold -s >&2 <<< "你没有通过命令替换来运行我! 请确保使用命令替换来运行本脚本."
 	exit 1
 elif [ ! -f /tmp/dstvar ]
 then
