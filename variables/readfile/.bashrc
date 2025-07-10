@@ -29,7 +29,7 @@ function check_read {
 		fold -s <<< "你调用了 'read' 命令，但似乎没有指定 PWN 变量！你需要将输入读取到 PWN 变量中才能通过这一关。"
 	elif [[ "$BASH_COMMAND" != *"<"* ]]
 	then
-		fold -s <<< "你调用了 'read' 命令，但似乎没有对它进行文件重定向！请使用标准输入（<）重定向来修正。"
+		fold -s <<< "你调用了 'read' 命令,但似乎没有对它进行文件重定向! 请使用标准输入(<)重定向来修正."
 	elif [[ "$BASH_COMMAND" != *read_me* ]]
 	then
 		fold -s <<< "你调用了 'read' 命令，但似乎没有将 /challenge/read_me 文件重定向到它！"
