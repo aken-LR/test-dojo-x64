@@ -4,7 +4,7 @@ CMDLINE=$(cat /proc/$PPID/cmdline | tr -d '\0')
 
 if [ "$CMDLINE" != "/bin/bash/challenge/solve" ] && [ "$CMDLINE" != "/bin/bash./solve" ]
 then
-	fold -s <<< "你必须通过 /challenge/solve 来调用我，才能解决这个挑战。""
+	fold -s <<< "你必须通过 /challenge/solve 来调用我，才能解决这个挑战。"
 	exit 1
 fi
 
