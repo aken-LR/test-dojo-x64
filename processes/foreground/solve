@@ -17,8 +17,8 @@ function resumed {
 
 	until [[ $(ps -o stat= -p $$) == *+* ]]; do sleep 0.1; done
 
-	echo <<< "太棒了！干得漂亮！我现在在前台运行了。"
-	echo <<< "按回车键即可获得你的 flag！"
+	echo "太棒了！干得漂亮！我现在在前台运行了。"
+	echo "按回车键即可获得你的 flag！"
 	read A
 	cat /flag
 	exit
