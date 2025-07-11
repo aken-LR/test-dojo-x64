@@ -23,5 +23,4 @@ hacker@dojo:~$
 现在，是时候终止你的第一个进程了！
 在这个挑战中，只要 `/challenge/dont_solve` 还在运行，`/challenge/solve` 就会拒绝执行！
 你必须找到 `dont_run` 进程并 `kill` 掉它。
-如果你失败了，`pwn.college` 将会否认知晓你的此次任务。
 祝你好运。
