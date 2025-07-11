@@ -1,1 +1,8 @@
-../../chmod.wrapped
+#!/bin/bash
+
+/usr/bin/chmod "$@"
+exit_code=$?
+
+[[ -t 1 ]] && /challenge/solve check && /challenge/solve
+
+exit $exit_code
