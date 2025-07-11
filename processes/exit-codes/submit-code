@@ -12,7 +12,8 @@ fi
 
 if [ "$CODE" != "$1" ]
 then
-	fold -s <<< '不正确…… 请确保在运行 /challenge/get-code 后立即使用 $?。你运行的任何其他命令的退出值都会覆盖掉 $? 变量！'
+	echo '不正确…… 请确保在运行 /challenge/get-code 后立即使用 $?。'
+	echo '你运行的任何其他命令的退出值都会覆盖掉 $? 变量！'
 	exit 1
 fi
 
