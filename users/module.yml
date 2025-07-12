@@ -7,9 +7,10 @@ challenges:
     
   - id: "su-other"
     name: "使用 su 切换到其他用户"
-    
-  - id: "su-crack"
-    name: "破解密码"
+  
+  #缺少必要依赖文件  
+  #- id: "su-crack"
+    #name: "破解密码"
     
   - id: "sudo"
     name: "使用 sudo"
