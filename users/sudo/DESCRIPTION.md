@@ -26,7 +26,7 @@ hacker@dojo:~$
 这些策略定义在 `/etc/sudoers` 文件中，尽管详细介绍它超出了我们这里的范围，但有很多[资源](https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file)可以学习相关内容！
 
 所以，世界已经转向使用 `sudo`，并且（在系统管理方面）抛弃了 `su`。
-实际上，就连 pwn.college 的练习模式也是通过赋予你 `sudo` 权限来让你提升权限的！
+实际上，就连 pwn.hust.college 的练习模式也是通过赋予你 `sudo` 权限来让你提升权限的！
 
 在这一关中，我们将给予你 `sudo` 权限，你需要用它来读取 flag。
 轻松愉快！
