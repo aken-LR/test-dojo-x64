@@ -36,7 +36,8 @@ modules:
   
   - id: "path"
   
-  - id: "shenanigans"
+  #缺少必要依赖库
+  #- id: "shenanigans"
   
   - id: "destruction"
   
