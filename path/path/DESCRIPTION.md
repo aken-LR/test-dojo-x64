@@ -20,4 +20,4 @@ hacker@dojo:~$
 因此，你必须让 `/challenge/solve` 也找不到 `rm` 命令！
 
 请记住：`/challenge/solve` 将会是你的 shell 的一个*子进程*，所以你必须运用在[Shell 变量](./variables)模块中学到的概念来修改它的 `PATH` 变量！
-如果你没有成功，导致 flag 被删除，你就需要重启挑战来重试！
+如果你没有成功，导致 flag 被删除，你就需要重启挑战来重试！ 
