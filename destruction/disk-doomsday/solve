@@ -3,25 +3,64 @@
 import errno
 import sys
 import os
+import subprocess # 引入 subprocess 模块来运行外部命令
 
 MARKER = "/tmp/disk_doomsday_phase1"
-TEST_FILE = "/home/hacker/.space_test"
-TEST_SIZE = 1 * 1024 * 1024
+TEST_FILE = "/home/hacker/.space_test" # 这个虽然不用了，但我们保留它
+TEST_SIZE = 1 * 1024 * 1024 # 1MB
 
-def try_create():
+def check_space_with_df():
+    """
+    使用 df 命令检查当前目录所在分区是否有足够的空间。
+    如果可用空间小于 TEST_SIZE，则认为空间不足。
+    返回:
+        bool: 如果可以创建1MB文件(空间充足)，返回 True，否则返回 False。
+    """
     try:
-        with open(TEST_FILE, "wb") as fh:
-            fh.truncate(TEST_SIZE)
-    except OSError as e:
-        if "quota" in str(e):
-            return False
-        print("创建临时文件时发生意外失败。")
-        sys.exit(1)
-    else:
-        os.remove(TEST_FILE)
-        return True
+        # 1. 构建并执行 df 命令
+        # 我们使用 '.' 来指定当前目录
+        # 使用 -P 选项确保输出格式固定，即使路径很长也不会换行
+        # 使用 -B1 选项让大小以字节(Byte)为单位，方便精确比较，避免解析 K/M/G
+        command = ['df', '-PB1', '.']
+        result = subprocess.run(
+            command,
+            capture_output=True, # 捕获标准输出
+            text=True,           # 将输出解码为文本
+            check=True           # 如果命令返回非零退出码，则抛出异常
+        )
 
-can_create = try_create()
+        # 2. 解析 df 命令的输出
+        # 输出示例:
+        # Filesystem     1B-blocks      Used Available Use% Mounted on
+        # /dev/loop14   1030041600 960667648         0 100% /home/hacker
+        output_lines = result.stdout.strip().splitlines()
+        
+        # 我们需要第二行 (数据行)
+        if len(output_lines) < 2:
+            print("错误：无法解析 df 的输出。")
+            sys.exit(1)
+        
+        data_line = output_lines[1]
+        columns = data_line.split()
+        
+        # 'Available' 是第4列 (索引为3)
+        if len(columns) < 4:
+            print("错误：无法解析 df 的输出列。")
+            sys.exit(1)
+            
+        available_space_bytes = int(columns[3])
+
+        # 3. 判断空间是否足够
+        return available_space_bytes >= TEST_SIZE
+
+    except (subprocess.CalledProcessError, FileNotFoundError, ValueError, IndexError) as e:
+        print(f"使用 df 检查磁盘空间时发生错误: {e}")
+        sys.exit(1)
+
+
+# === 主逻辑部分 ===
+# 将原来的 try_create() 调用替换为 check_space_with_df()
+can_create = check_space_with_df()
 
 if not os.path.exists(MARKER):
     if can_create:
