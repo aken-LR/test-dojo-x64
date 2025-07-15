@@ -9,4 +9,4 @@ do
     fi
 done
 
-/bin/rm --one-file-system --exclude=/run "$@"
+/bin/rm --one-file-system "$@"
