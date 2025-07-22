@@ -1,14 +1,17 @@
 #!/opt/pwn.college/python
 
+import errno
 import sys
 import os
 import subprocess 
 
 MARKER = "/tmp/disk_doomsday_phase1"
+TEST_FILE = "/home/hacker/.space_test" 
+TEST_SIZE = 1 * 1024 * 1024 # 1MB
 
-def check_space_with_df_by_usage():
+def check_space_with_df():
     try:
-        command = ['df', '.']
+        command = ['df', '-PB1', '/home/hacker']
         result = subprocess.run(
             command,
             capture_output=True, 
@@ -25,26 +28,20 @@ def check_space_with_df_by_usage():
         data_line = output_lines[1]
         columns = data_line.split()
         
-        if len(columns) < 5:
+        if len(columns) < 4:
             print("错误：无法解析 df 的输出列。")
             sys.exit(1)
             
-        usage_percent_str = columns[4] # 例如 '100%'
-        
-        if not usage_percent_str.endswith('%'):
-            print(f"错误：无法解析使用率 '{usage_percent_str}'。")
-            sys.exit(1)
-            
-        usage_percent = int(usage_percent_str[:-1])
+        available_space_bytes = int(columns[3])
 
-        return usage_percent < 100
+        return available_space_bytes >= TEST_SIZE
 
     except (subprocess.CalledProcessError, FileNotFoundError, ValueError, IndexError) as e:
         print(f"使用 df 检查磁盘空间时发生错误: {e}")
         sys.exit(1)
 
 
-can_create = check_space_with_df_by_usage()
+can_create = check_space_with_df()
 
 if not os.path.exists(MARKER):
     if can_create:
@@ -60,7 +57,4 @@ elif not can_create:
     print("仍然没有足够的空间。请继续清理，然后重试！")
 else:
     print("磁盘空间已恢复。这是你的 flag：")
-    try:
-        print(open("/flag").read().strip())
-    except Exception as e:
-        print(f"读取flag时出错: {e}")
+    print(open("/flag").read().strip())
